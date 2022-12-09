@@ -1,0 +1,161 @@
+$height: 95vh;
+$blue: #3633ff;
+$red: #ff3333;
+$delay: -0.5;
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, .1);
+    height: 100vh;
+    width: 100vw;
+}
+
+.trophy {
+    position: absolute;
+    top: 50%;
+    left: 12%;
+    transform: translate(-50%, -50%) scale(1.4);
+}
+
+ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) skew(15deg);
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    li {
+        position: relative;
+        overflow: hidden;
+        list-style-type: none;
+        width: 0.5vw;
+        height: $height;
+        border-radius: 2px;
+        box-shadow: -0.5px 0 0.5px rgba(0, 0, 0, .1);
+        animation: wave 10s linear infinite;
+    }
+}
+
+.blue {
+    background-color: $blue;
+}
+
+.red {
+    border-color: $red;
+}
+
+
+.star {
+    width: 20%;
+    height: 20%;
+    position: relative;
+    z-index: 99;
+    opacity: 1;
+    bottom: -30%;
+    left: 35%;
+    //border: 1px solid black;
+
+    p {
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        position: absolute;
+        left: 50%;
+        bottom: -27%;
+        z-index: 100;
+        transform: translate(-50%, -50%);
+        //color:#fff;
+        text-align: center;
+    }
+
+    &._1 {
+        transform: translate(50%, 40%);
+    }
+
+
+    &._2 {
+        transform: translate(100%, 0%);
+        img {
+            opacity: 0.4;
+        }
+    }
+
+    &._3 {
+        transform: translate(0%, -100%);
+
+        
+    }
+}
+
+.star-img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+@for $i from 0 to 100 {
+    ul li:nth-child(100n+#{$i}) {
+        animation-delay: #{$delay}s;
+    }
+
+    $delay : calc($delay - .3)
+}
+
+
+.blue::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: $height;
+    top: 0;
+    left: 0;
+    background-color: $blue;
+}
+
+.white::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: $height;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+}
+
+.red::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: $height;
+    top: 0;
+    left: 0%;
+    background-color: $red;
+}
+
+
+
+@keyframes wave {
+    0% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(5px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    75% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
